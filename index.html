@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TimeMaster Dashboard</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+<div class="container">
+
+  <!-- Sidebar -->
+  <aside class="sidebar">
+    <h2>TimeMaster</h2>
+    <p>Focus, plan, track — get more done.</p>
+    <nav>
+      <button onclick="showSection('dashboard')">Dashboard</button>
+    </nav>
+    <div class="quick-add">
+      <input type="text" id="quickTask" placeholder="Quick add task...">
+      <button onclick="addTaskFromInput('quickTask')">Add</button>
+    </div>
+    <p>Sessions completed: <span id="sessionsCompleted">0</span></p>
+  </aside>
+
+  <!-- Main Content -->
+  <main class="main">
+    <section id="dashboard">
+      <h3>Dashboard</h3>
+      <p>Overview of your productivity and tasks</p>
+
+      <!-- Dashboard Stats -->
+      <div class="dashboard-cards">
+        <div class="card"><p>Total Tasks</p><h2 id="dashTotalTasks">0</h2></div>
+        <div class="card"><p>Completed Tasks</p><h2 id="dashCompletedTasks">0</h2></div>
+        <div class="card"><p>Minutes Tracked</p><h2 id="dashMinutesTracked">0</h2></div>
+        <div class="card"><p>Pomodoro Sessions</p><h2 id="dashSessionsCompleted">0</h2></div>
+      </div>
+
+      <!-- Tasks List -->
+      <div class="card task-section">
+        <h4>Tasks</h4>
+        <div class="task-input">
+          <input type="text" id="taskName" placeholder="Task name">
+          <button onclick="addTask()">Add Task</button>
+        </div>
+        <ul id="taskList" class="task-list"></ul>
+      </div>
+
+      <!-- Pomodoro Timer -->
+      <div class="card timer-card">
+        <h4>Pomodoro Timer</h4>
+        <span id="timerDisplay">25:00</span>
+        <p>Mode: <span id="timerMode">work</span></p>
+        <div class="timer-controls">
+          <button onclick="startTimer()">Start</button>
+          <button onclick="pauseTimer()">Pause</button>
+          <button onclick="resetTimer()">Reset</button>
+        </div>
+        <div class="task-select">
+          <label>Associate task:</label>
+          <select id="taskSelect">
+            <option value="">-- none --</option>
+          </select>
+        </div>
+      </div>
+
+      <!-- Custom Timer Settings -->
+      <div class="card">
+        <h4>Timer Settings</h4>
+        <label>Work Duration (minutes):</label>
+        <input type="number" id="workMinutes" value="25" min="1" max="120"><br>
+        <label>Break Duration (minutes):</label>
+        <input type="number" id="breakMinutes" value="5" min="1" max="60"><br>
+        <button onclick="saveSettings()">Save Settings</button>
+      </div>
+
+      <!-- Weekly Productivity Chart -->
+      <div class="card">
+        <h4>Weekly Productivity</h4>
+        <canvas id="chart"></canvas>
+      </div>
+
+      <!-- About -->
+      <div class="card about-card">
+        <h4>About Me</h4>
+        <p><strong>Charan Pudi</strong></p>
+        <p>I am an aspiring web and Java developer passionate about building interactive, user-friendly applications. I enjoy solving complex problems using modern programming techniques and continuously improving my technical and design skills. My goal is to become a proficient software engineer capable of delivering scalable and elegant front-end and back-end solutions.</p>
+      </div>
+    </section>
+  </main>
+
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
